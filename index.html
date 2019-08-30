@@ -10,10 +10,44 @@
     <title>jQuery Salary Calculator</title>
 </head>
 <body>
-    <header>
+    <header id="headerText">
         <h1>jQuery Salary Calculator</h1>
     </header>
     <main>
+        <div id=title>
+            <h2>Add Employee</h2>
+        </div>
+        <div id="Submits">
+            <input type="text" name="fName" id="fName" placeholder="First Name">
+            <input type="text" name="lName" id="lName" placeholder="Last Name">
+            <input type="number" name="iD" id="iD" placeholder="ID">
+            <input type="text" name="title" id="title" placeholder="Title">
+            <input type="number" name="aSalary" id="aSalary" placeholder="Annual Salary">
+            <br/>
+            <br/>
+            <button id="submitBtn" type="text" style="float: left;">Submit</button>
+
+        </div>
+        <br/>
+        <br/>
+        <div id="Employees">
+            <h2>Current Employees</h2>
+            <table id="employeeTable" style="width: 80%">
+                <tr id="tableHeaders">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Salary</th>
+                    <th></th>
+                </tr>
+                <tr class="employeeData">
+
+                </tr>
+
+            </table>
+
+        </div>
 
     </main>
     <footer>

@@ -1,3 +1,27 @@
+body {
+    background-color: bisque;
+}
 header {
     text-align: center;
+}
+
+#headerText {
+    color: black;
+}
+
+main {
+    background-color: blanchedalmond;
+    text-align: left;
+}
+#title {
+    text-align: center;
+}
+#submits {
+
+}
+.errorSubmits {
+
+}
+#Employees {
+    background-color: gainsboro; 
 }
