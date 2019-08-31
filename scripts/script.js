@@ -1,6 +1,6 @@
 console.log('JS File');
 
-const employeeArray = [
+let employeeArray = [
     {
         firstName: 'Harry',
         lastName: 'Nilsson',
@@ -14,7 +14,9 @@ $( document ).ready( onReady );
 
 function onReady() {
     console.log('Here is the onReady');
-    $( '#submitBtn' ).on( 'click', handleSubmit );
+    $( '#submitBtn' ).on( 'click', handleSubmit);
+    $( '.deleteRowItem').on( 'click', deleteRow);
+
     listOutEmployees();
 } // end onReady
 
@@ -57,21 +59,28 @@ function listOutEmployees() {
 
     for ( person of employeeArray ) {
         console.log(person.firstName);
-        let $rowItem = $(
-        `<td>${person.firstName}</td>
+        
+        let rowItem = $(
+        `<tr>
+        <td>${person.firstName}</td>
         <td>${person.lastName}</td>
         <td>${person.employeeID}</td>
         <td>${person.employeeTitle}</td>
         <td>${person.annualSalary}</td>
-        <td>Delete Button</td>`
+        <td><button class='deleteRowItem'>Delete</button></td>
+        <tr>`
         );
         
-        $rowItem.data(person.firstName, person.lastName, person.employeeID, person.employeeTitle, person.annualSalary);
+        rowItem.data(person.firstName, person.lastName, person.employeeID, person.employeeTitle, person.annualSalary);
 
-        $( '#employeeData' ).append( $rowItem );
+        $( '#employeeTable' ).append( rowItem);
+        employeeArray = [];
 
     }
-
-    
 } // end listEmployees
+
+function deleteRow() {
+    console.log('clicked delete button!');
+    $( this ).remove();
+}
 
