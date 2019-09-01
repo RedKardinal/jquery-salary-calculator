@@ -25,3 +25,15 @@ main {
 #Employees {
     background-color: gainsboro; 
 }
+.deleteBtn {
+    cursor: pointer;
+}
+#budget {
+    float: right;
+}
+.budgetError {
+    background-color: red;
+}
+#remainingBudgetOut {
+    float: right;
+}

@@ -1,25 +1,16 @@
 console.log('JS File');
 
-let employeeArray = [
-    {
-        firstName: 'Harry',
-        lastName: 'Nilsson',
-        employeeID: '1941',
-        employeeTitle: 'Song Writer',
-        annualSalary: '$25'
-    }
-]; // end employeeArray
-
 $( document ).ready( onReady );
 
-function onReady() {
+function onReady(){
     console.log('Here is the onReady');
     $( '#submitBtn' ).on( 'click', handleSubmit);
-    $( '.deleteRowItem').on( 'click', deleteRow);
 
+    calculateBudget();
     listOutEmployees();
-} // end onReady
+}
 
+let employeeArray = [];
 
 function handleSubmit() {
     console.log('Submitted');
@@ -27,8 +18,16 @@ function handleSubmit() {
     let fNameValue = $( '#fName' ).val();
     let lNameValue = $( '#lName' ).val();
     let iDValue = $( '#iD' ).val();
-    let titleValue = $( '#title' ).val();
+    let titleValue = $( '#tItle' ).val();
     let aSalaryValue = $( '#aSalary' ).val();
+
+    if ( fNameValue === '' || lNameValue === '' || iDValue === '') {
+        alert('Please fill in all fields');
+    }
+    else if (titleValue === '' || aSalaryValue === '') {
+        alert('Please fill in all fields');
+    }
+    else {
 
     // new Object
     let newObject = {
@@ -36,51 +35,71 @@ function handleSubmit() {
         lastName: lNameValue,
         employeeID: iDValue,
         employeeTitle: titleValue,
-        annualSalary: aSalaryValue
+        annualSalary: aSalaryValue,
     }; // end newEmployee
 
     // push
 
     employeeArray.push(newObject);
     console.log(employeeArray);
-    listOutEmployees();
 
     // clear values
-    $( 'fName' ).val('');
-    $( 'lName' ).val('');
-    $( 'iD' ).val('');
-    $( 'title' ).val('');
-    $( 'aSalary' ).val('');
+    $('#fName').val('');
+    $('#lName').val('');
+    $('#iD').val('');
+    $('#tItle').val('');
+    $('#aSalary').val('');
+
+    listOutEmployees();
+
+    calculateBudget();
+  
+    } // blank fields
 
 } // end handleSubmit
 
-function listOutEmployees() {
-    $( '#employeeData' ).empty();
+function listOutEmployees(){
 
-    for ( person of employeeArray ) {
-        console.log(person.firstName);
-        
-        let rowItem = $(
-        `<tr>
-        <td>${person.firstName}</td>
-        <td>${person.lastName}</td>
-        <td>${person.employeeID}</td>
-        <td>${person.employeeTitle}</td>
-        <td>${person.annualSalary}</td>
-        <td><button class='deleteRowItem'>Delete</button></td>
-        <tr>`
+    $('#employeeTable').empty();
+
+    for (person of employeeArray){
+        $('#employeeTable').append(
+            `<tr>
+            <td>${person.firstName}</td>
+            <td>${person.lastName}</td>
+            <td>${person.employeeID}</td>
+            <td>${person.employeeTitle}</td>
+            <td>${person.annualSalary}</td>
+            <td><button class='deleteBtn'>Delete</button></td>
+            </tr>`
         );
-        
-        rowItem.data(person.firstName, person.lastName, person.employeeID, person.employeeTitle, person.annualSalary);
+    }// end for
+    $('.deleteBtn').on( 'click', deleteEmployee );
 
-        $( '#employeeTable' ).append( rowItem);
-        employeeArray = [];
+}// end listOutEmployee
 
+function calculateBudget (){
+
+    let totalSalary = 0; 
+    employeeArray.forEach( function(person) {
+        totalSalary += Number(person.annualSalary);
+    });
+
+    // MONTHLY SALARY!!!
+    const monthlySalary = Number(totalSalary / 12);
+    const monthlySalaryAbove = Number(monthlySalary).toFixed(2);
+    $('#remainingBudgetOut').empty();
+    $('#remainingBudgetOut').append(monthlySalaryAbove);
+
+    if (monthlySalaryAbove >= 20000 ) {
+        alert('Time to fire someone!');
+        $( '#budget' ).toggleClass('budgetError');
     }
-} // end listEmployees
 
-function deleteRow() {
-    console.log('clicked delete button!');
-    $( this ).remove();
 }
 
+function deleteEmployee() {
+    console.log('delete');
+    $(this).parent().parent().remove();
+
+} // end delete
