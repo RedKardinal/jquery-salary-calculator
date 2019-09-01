@@ -1,39 +1,85 @@
 body {
     background-color: bisque;
+    background-image: url('backg.jpg');
+    background-size: 1450px;
+    background-position: stretch;
+    background-repeat: no-repeat;
 }
 header {
     text-align: center;
+    border: 1px black;
+    margin: 1px;
 }
 
 #headerText {
     color: black;
 }
-
+@font-face {
+    font-family: rFont;
+    src: url('ptf.ttf');
+}
 main {
-    background-color: blanchedalmond;
+    background-color: 
     text-align: left;
 }
 #title {
-    text-align: center;
+    text-align: left;
+    padding-left: 100px;
 }
 #submits {
-
+    border: 1px black;
+    padding-left: 10px;
+    margin-left: 100px;
+}
+#fName{
+    margin-left: 100px;
+}
+#submitBtn{
+    margin-left: 100px;
 }
 .errorSubmits {
 
-}
-#Employees {
-    background-color: gainsboro; 
 }
 .deleteBtn {
     cursor: pointer;
 }
 #budget {
     float: right;
+    padding: 7px;
+    padding-top: 1px;
+    margin-right: 30px;
+    border: 1px solid black;
 }
 .budgetError {
     background-color: red;
+    color: white;
+    padding: 5px;
+    border: 1px solid black;
+    margin-right: 20px;
 }
 #remainingBudgetOut {
     float: right;
+}
+th, td{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding: 10px;
+    background-color: white;
+    /* background-image: url('moneyb.jpg') */
+
+}
+input {
+    border: 1px solid black;
+    width: 200px;
+    height: 25px;
+    text-align: center;
+}
+h1 {
+    font-family: rFont;
+}
+h2 {
+    font-family: rFont;
+    font-size: 30px;
 }

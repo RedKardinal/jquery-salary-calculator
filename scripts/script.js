@@ -63,7 +63,7 @@ function listOutEmployees(){
     $('#employeeTable').empty();
 
     for (person of employeeArray){
-        $('#employeeTable').append(
+        $('#employeeTableLabels').append(
             `<tr>
             <td>${person.firstName}</td>
             <td>${person.lastName}</td>
