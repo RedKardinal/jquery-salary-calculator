@@ -8,7 +8,7 @@ function onReady(){
 
     calculateBudget();
     listOutEmployees();
-}
+} // end onReady
 
 let employeeArray = [];
 
@@ -23,10 +23,12 @@ function handleSubmit() {
 
     if ( fNameValue === '' || lNameValue === '' || iDValue === '') {
         alert('Please fill in all fields');
-    }
+    } // end if
+
     else if (titleValue === '' || aSalaryValue === '') {
         alert('Please fill in all fields');
-    }
+    } // wns else if
+
     else {
 
     // new Object
@@ -70,10 +72,11 @@ function listOutEmployees(){
             <td>${person.employeeID}</td>
             <td>${person.employeeTitle}</td>
             <td>${person.annualSalary}</td>
-            <td><button class='deleteBtn'>Delete</button></td>
+            <td><center><button class='deleteBtn'>Delete</button></center></td>
             </tr>`
         );
     }// end for
+
     $('.deleteBtn').on( 'click', deleteEmployee );
 
 }// end listOutEmployee
@@ -94,9 +97,9 @@ function calculateBudget (){
     if (monthlySalaryAbove >= 20000 ) {
         alert('Time to fire someone!');
         $( '#budget' ).toggleClass('budgetError');
-    }
+    } // end over budget
 
-}
+}// end calc budget
 
 function deleteEmployee() {
     console.log('delete');
