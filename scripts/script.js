@@ -103,6 +103,6 @@ function calculateBudget (){
 
 function deleteEmployee() {
     console.log('delete');
-    $(this).parent().parent().remove();
+    $(this).parent().parent().parent().remove();
 
 } // end delete
